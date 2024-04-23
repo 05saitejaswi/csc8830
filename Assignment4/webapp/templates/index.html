@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSc 8830: Computer Vision</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Custom CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: pink;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .title {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #333;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .sub-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #666;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+        }
+
+        .card {
+            width: calc(50% - 40px);
+            margin: 20px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .header {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+            text-transform: uppercase;
+        }
+
+        .btn {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 200px;
+            font-size: 16px;
+            text-decoration: none;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-tertiary {
+            background-color: #28a745;
+        }
+
+        .btn-tertiary:hover {
+            background-color: #218838;
+        }
+
+        .btn-quaternary {
+            background-color: #dc3545;
+        }
+
+        .btn-quaternary:hover {
+            background-color: #c82333;
+        }
+
+        .inputfile {
+            display: none;
+        }
+
+        .file-label {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            background-color: #007bff;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .file-label:hover {
+            background-color: #0056b3;
+        }
+
+        /* Custom styles for two cards in one row */
+        .double-card-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .double-card {
+            width: calc(50% - 20px);
+        }
+
+        @media screen and (max-width: 768px) {
+            .double-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">CSc 8830: Computer Vision</h1>
+    <div class="container">
+        <h2 class="sub-title">Saitejaswi Chakravaram (002762775)</h2>
+        <!-- Two cards in one row -->
+        <div class="double-card-container">
+            <div class="card double-card">
+                <h3 class="header">Assignment 1 (5): Find Real-world Dimensions</h3>
+                <form action="{{ url_for('real_dimensions') }}" method="post" enctype="multipart/form-data" class="upload-form">
+                    <input type="file" name="file" id="file" class="inputfile">
+                    <label for="file" class="file-label">Choose a file</label>
+                    <button type="submit" class="btn btn-primary">Compute Dimensions</button>
+                </form>
+            </div>
+            <div class="card double-card">
+                <h3 class="header">Assignment 2 (4): Compute Integral Image</h3>
+                <form action="{{ url_for('integral_image') }}" method="post" enctype="multipart/form-data" class="upload-form">
+                    <input type="file" name="image" id="image" class="inputfile">
+                    <label for="image" class="file-label">Choose a file</label>
+                    <button type="submit" class="btn btn-secondary">Integral Image</button>
+                </form>
+            </div>
+        </div>
+        <!-- Two cards in one row -->
+        <div class="double-card-container">
+            <div class="card double-card">
+                <h3 class="header">Assignment 2 (5): Create Panorama</h3>
+                <form action="{{ url_for('create_panorama') }}" method="post" enctype="multipart/form-data" class="form" name="ImageStitching">
+                    <input type="file" name="images" id="images" accept="image/*" multiple class="inputfile">
+                    <label for="images" class="file-label">Choose images</label>
+                    <button type="submit" class="btn btn-tertiary">Create Panorama</button>
+                </form>
+            </div>
+            <div class="card double-card">
+                <h3 class="header">Assignment 4 (1): Object Tracking & Recognition</h3>
+                <form action="{{ url_for('object_tracking') }}" method="post" enctype="multipart/form-data" class="form" name="ObjectTracking">
+                    <label class="file-label">Real-time Object Tracking, Recognition, and Dimensions Calculation </label>
+                    <button type="submit" class="btn btn-quaternary">Start Tracking</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
